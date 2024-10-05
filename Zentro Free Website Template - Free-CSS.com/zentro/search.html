@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Recipes</title>
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .recipe {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .recipe h2 {
+            color: #444;
+        }
+
+        .recipe ul {
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+
+        .recipe img {
+            max-width: 300px;
+            height: auto;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+
+        /* Styling the search bar */
+        .search-bar {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .search-bar button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* No recipe found message */
+        .no-recipe {
+            text-align: center;
+            color: red;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Food Recipes</h1>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search for recipes...">
+        <button onclick="searchRecipe()">Search</button>
+    </div>
+
+    <div id="recipe-list"></div> <!-- This is where the recipes will be inserted -->
+
+    <script>
+        const recipes = [
+            {
+                "id": 1,
+                "name": "Spaghetti Carbonara",
+                "ingredients": [
+                    "200g Spaghetti",
+                    "2 large Eggs",
+                    "100g Parmesan Cheese",
+                    "100g Pancetta",
+                    "Salt",
+                    "Freshly ground Black Pepper"
+                ],
+                "instructions": "Cook spaghetti in salted water until al dente. In a separate pan, cook pancetta until crispy. Beat eggs and mix with grated parmesan. Combine hot pasta, pancetta, and egg mixture quickly. Season with salt and pepper. Serve immediately.",
+                "category": "Main Course",
+                "image_url": "https://example.com/images/carbonara.jpg",
+                "prep_time": "10 min",
+                "cook_time": "15 min"
+            },
+            {
+                "id": 2,
+                "name": "Chocolate Cake",
+                "ingredients": [
+                    "200g All-purpose Flour",
+                    "200g Sugar",
+                    "100g Cocoa Powder",
+                    "2 large Eggs",
+                    "150g Butter",
+                    "1 tsp Baking Powder",
+                    "200ml Milk"
+                ],
+                "instructions": "Preheat the oven to 180°C (350°F). Mix dry ingredients in a bowl. In another bowl, beat eggs and butter. Gradually combine wet and dry ingredients. Pour into a greased baking tin and bake for 30-35 minutes.",
+                "category": "Dessert",
+                "image_url": "https://example.com/images/chocolate_cake.jpg",
+                "prep_time": "20 min",
+                "cook_time": "35 min"
+            },
+            {
+                "id": 3,
+                "name": "Caesar Salad",
+                "ingredients": [
+                    "1 head of Romaine Lettuce",
+                    "50g Parmesan Cheese",
+                    "100g Croutons",
+                    "1 Chicken Breast",
+                    "Caesar Dressing",
+                    "Salt",
+                    "Pepper"
+                ],
+                "instructions": "Grill chicken breast and slice thinly. Toss lettuce, croutons, and chicken with Caesar dressing. Top with grated Parmesan cheese, season with salt and pepper.",
+                "category": "Salad",
+                "image_url": "https://example.com/images/caesar_salad.jpg",
+                "prep_time": "15 min",
+                "cook_time": "10 min"
+            },
+            {
+                "id": 4,
+                "name": "Grilled Cheese Sandwich",
+                "ingredients": [
+                    "2 slices of Bread",
+                    "2 slices of Cheddar Cheese",
+                    "Butter"
+                ],
+                "instructions": "Heat a skillet over medium heat. Butter the outside of each slice of bread, place a slice of cheese between them. Cook in the skillet until golden and the cheese is melted, flipping once.",
+                "category": "Snack",
+                "image_url": "https://example.com/images/grilled_cheese.jpg",
+                "prep_time": "5 min",
+                "cook_time": "5 min"
+            },
+            {
+                "id": 5,
+                "name": "Guacamole",
+                "ingredients": [
+                    "2 ripe Avocados",
+                    "1 Lime",
+                    "1 Tomato",
+                    "Salt",
+                    "Cilantro",
+                    "Onion"
+                ],
+                "instructions": "Mash the avocados, and mix in chopped onion, tomato, cilantro, and lime juice. Season with salt to taste.",
+                "category": "Dip",
+                "image_url": "https://example.com/images/guacamole.jpg",
+                "prep_time": "10 min",
+                "cook_time": "0 min"
+            }
+
+
+
+        ];
+
+        function displayRecipes(filteredRecipes) {
+            const recipeList = document.getElementById('recipe-list');
+            recipeList.innerHTML = '';  // Clear the current recipes
+
+            if (filteredRecipes.length === 0) {
+                recipeList.innerHTML = '<p class="no-recipe">No recipes found. Please try another search.</p>';
+                return;
+            }
+
+            filteredRecipes.forEach(recipe => {
+                let recipeDiv = document.createElement('div');  // Create a div for each recipe
+                recipeDiv.className = 'recipe';
+
+                // Create the content for each recipe using template literals
+                let recipeContent = `
+                    <h2>${recipe.name}</h2>
+                    <p><strong>Category:</strong> ${recipe.category}</p>
+                    <p><strong>Ingredients:</strong></p>
+                    <ul>
+                        ${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+                    </ul>
+                    <p><strong>Instructions:</strong> ${recipe.instructions}</p>
+                    <p><strong>Prep Time:</strong> ${recipe.prep_time}</p>
+                    <p><strong>Cook Time:</strong> ${recipe.cook_time}</p>
+                    <img src="${recipe.image_url}" alt="${recipe.name}">
+                `;
+
+                recipeDiv.innerHTML = recipeContent;  // Add the content to the div
+                recipeList.appendChild(recipeDiv);  // Append the div to the recipe list container
+            });
+        }
+
+        // Initial display of all recipes
+        displayRecipes(recipes);
+
+        // Search for recipes by name or ingredient
+        function searchRecipe() {
+            const searchInput = document.getElementById('search-input').value.toLowerCase();
+            const filteredRecipes = recipes.filter(recipe => {
+                return (
+                    recipe.name.toLowerCase().includes(searchInput) ||
+                    recipe.ingredients.some(ingredient => ingredient.toLowerCase().includes(searchInput))
+                );
+            });
+
+            displayRecipes(filteredRecipes);
+        }
+    </script>
+</body>
+</html>
