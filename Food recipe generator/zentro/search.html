@@ -1,0 +1,348 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Recipes</title>
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d4a376;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .recipe {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border: 100px solid #ffffff;
+            border-radius: 80px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .recipe h2 {
+            color: #444;
+        }
+
+        .recipe ul {
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+
+        .recipe img {
+            max-width: 300px;
+            height: 10%;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+
+        /* Styling the search bar */
+        .search-bar {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .search-bar button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* No recipe found message */
+        .no-recipe {
+            text-align: center;
+            color: rgb(118, 32, 32);
+            font-size: 18px;
+        }
+    </style>
+    <meta charset="utf-8">
+	<title>Mandarin</title>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+<!--
+
+Template 2076 ChefBot
+
+http://www.tooplate.com/view/2076-ChefBot
+
+-->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/nivo-lightbox.css">
+	<link rel="stylesheet" href="css/nivo_themes/default/default.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+
+    </style>
+<section class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+			</button>
+			<a href="index.html" class="navbar-brand">Mandarin</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+                <li><a href="search.html" class="smoothScroll">SEARCH</a></li>
+				<li><a href="index.html" class="smoothScroll">HOME</a></li>
+				<li><a href="index.html#gallery" class="smoothScroll">MONTHLY PICKS</a></li>
+				<li><a href="chatbot.html" class="smoothScroll">AI CHATBOT</a></li>
+				<li><a href="index.html#contact" class="smoothScroll">CONTACT</a></li>
+				<li><a href="index.html#signup">SIGN UP</a></li>
+		</div>
+	</div>
+</section>
+
+    <h1>Food Recipes</h1>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search for recipes...">
+        <button onclick="searchRecipe()">Search</button>
+    </div>
+
+    <div id="recipe-list"></div> <!-- This is where the recipes will be inserted -->
+
+    <script>
+        const recipes = [
+            {
+                "id": 1,
+                "name": "Spaghetti Carbonara",
+                "ingredients": [
+                    "200g Spaghetti",
+                    "2 large Eggs",
+                    "100g Parmesan Cheese",
+                    "100g Pancetta",
+                    "Salt",
+                    "Freshly ground Black Pepper"
+                ],
+                "instructions": "Bring a large pot of salted water to a boil. Add the spaghetti and cook according to the package instructions until al dente. Reserve about 1 cup of the pasta cooking water before draining.\n Prepare the sauce:While the pasta is cooking, whisk the eggs and grated cheese together in a bowl until well combined. Set aside. Cook the pancetta (or guanciale): Heat a large skillet over medium heat. Add the diced pancetta (or guanciale) and cook until it becomes crispy and golden brown, about 5-7 minutes. If using garlic, add the whole cloves to the skillet with the pancetta and cook until fragrant, then remove the garlic. Combine the pasta and pancetta: Once the pasta is cooked, add it directly to the skillet with the pancetta. Toss to combine, making sure the pasta is coated in the pancetta fat. Remove from heat. Finish the dish: Pour the egg and cheese mixture over the hot pasta, tossing quickly to coat the spaghetti. The heat from the pasta will gently cook the eggs, forming a creamy sauce. If the sauce is too thick, add a little of the reserved pasta water, a tablespoon at a time, until you reach your desired consistency. Season and serve: Season with freshly ground black pepper to taste. You can garnish with more grated cheese and some fresh parsley if desired. Serve immediately and enjoy your delicious spaghetti carbonara! Notes: Make sure the heat is off when you add the egg mixture, or the eggs might scramble instead of creating a smooth sauce. Traditional carbonara does not use cream; the creaminess comes from the emulsification of eggs, cheese, and pasta water.",
+                "category": "Main Course",
+                "image_url": "images/spaghetti-carbonara.jpeg",
+                "prep_time": "10 min",
+                "cook_time": "15 min"
+            },
+            {
+                "id": 2,
+                "name": "Chocolate Cake",
+                "ingredients": [
+                    "200g All-purpose Flour",
+                    "200g Sugar",
+                    "100g Cocoa Powder",
+                    "2 large Eggs",
+                    "150g Butter",
+                    "1 tsp Baking Powder",
+                    "200ml Milk"
+                ],
+                "instructions": "Preheat the oven to 350°F (175°C). Grease and flour two 9-inch round baking pans or line with parchment paper. Mix dry ingredients: In a large bowl, whisk together the flour, cocoa powder, sugar, baking powder, baking soda, and salt. Add wet ingredients: Add the eggs, milk, vegetable oil, and vanilla extract. Beat on medium speed for about 2 minutes until smooth. Add boiling water: Slowly stir in the boiling water or hot coffee (batter will be thin, but that's okay). Bake: Pour the batter evenly into the prepared pans. Bake for 30-35 minutes or until a toothpick inserted in the center comes out clean. Cool: Let the cakes cool in the pans for about 10 minutes, then transfer them to a wire rack to cool completely.",
+                "category": "Dessert",
+                "image_url": "images/chocolate-cake.jpg",
+                "prep_time": "20 min",
+                "cook_time": "35 min"
+            },
+            {
+                "id": 3,
+                "name": "Caesar Salad",
+                "ingredients": [
+                    "1 head of Romaine Lettuce",
+                    "50g Parmesan Cheese",
+                    "100g Croutons",
+                    "1 Chicken Breast",
+                    "Caesar Dressing",
+                    "Salt",
+                    "Pepper"
+                ],
+                "instructions": "For the Dressing: Mash anchovies and garlic: If using anchovy fillets, mash them together with the garlic in a small bowl or on a cutting board until it forms a paste. Whisk egg yolk: In a medium bowl, whisk together the egg yolk (or mayonnaise), Dijon mustard, lemon juice, Worcestershire sauce, and the mashed anchovy-garlic mixture. Add oil: Slowly drizzle in the olive oil while whisking constantly to create a creamy emulsion. The dressing should thicken as you add the oil. Season: Add freshly ground black pepper to taste. Taste and adjust with more lemon juice, mustard, or seasoning if needed. For the Salad: Prepare lettuce: Wash and dry the Romaine lettuce. Tear it into bite-sized pieces and place in a large salad bowl. Toss with dressing: Drizzle the dressing over the lettuce and toss until evenly coated. Add croutons and Parmesan: Top the salad with the croutons and freshly grated Parmesan cheese. Serve: Serve immediately while the croutons are crispy and the salad is freshly tossed.",
+                "category": "Salad",
+                "image_url": "images/caesar-salad.jpg",
+                "prep_time": "15 min",
+                "cook_time": "10 min"
+            },
+            {
+                "id": 4,
+                "name": "Grilled Cheese Sandwich",
+                "ingredients": [
+                    "2 slices of Bread",
+                    "2 slices of Cheddar Cheese",
+                    "Butter"
+                ],
+                "instructions": "HFor a delicious grilled cheese, start by buttering two slices of bread on one side each, then layer your favorite cheese (like cheddar, American, or mozzarella) between the unbuttered sides; heat a skillet over medium heat and place one slice buttered-side down in the pan, followed by the second slice on top, buttered-side up, and cook for 3-4 minutes per side, pressing gently with a spatula, until both sides are golden brown and crispy, and the cheese is fully melted and gooey.eat a skillet over medium heat. Butter the outside of each slice of bread, place a slice of cheese between them. Cook in the skillet until golden and the cheese is melted, flipping once.",
+                "category": "Snack",
+                "image_url": "images/grilled-cheese-sandwich.jpg",
+                "prep_time": "5 min",
+                "cook_time": "5 min"
+            },
+            {
+                "id": 5,
+                "name": "Guacamole",
+                "ingredients": [
+                    "2 ripe Avocados",
+                    "1 Lime",
+                    "1 Tomato",
+                    "Salt",
+                    "Cilantro",
+                    "Onion"
+                ],
+                "instructions": "Mash the avocados, and mix in chopped onion, tomato, cilantro, and lime To make a flavorful guacamole, start by mashing three ripe avocados in a bowl to your desired consistency, then mix in finely diced red onion and jalapeño for a bit of heat, add minced garlic and freshly chopped cilantro for depth of flavor, squeeze in the juice of one or two limes to add tanginess and prevent browning, season with salt and freshly ground black pepper to taste, optionally incorporate diced tomatoes for extra texture and freshness, gently stir all the ingredients together until well combined, adjust the seasoning as needed, and serve immediately with tortilla chips, vegetable sticks, or as a topping for tacos, burritos, and other favorite dishes.juice. Season with salt to taste.",
+                "category": "Dip",
+                "image_url": "images/guacamole.jpg",
+                "prep_time": "10 min",
+                "cook_time": "0 min"
+
+                
+            },
+            {
+                "id": 6,
+                "name": "Chicken Noodle Soup",
+                "ingredients": [
+                    "1 lb (450g) boneless, skinless chicken breasts or thighs",
+                    "8 cups (2 liters) chicken broth",
+                    "2 tbsp olive oil",
+                    "1 medium onion, diced",
+                    "3 medium carrots, peeled and sliced",
+                    "2 celery stalks, sliced",
+                    "3 garlic cloves, minced",
+                    "2 tsp fresh thyme (or 1 tsp dried thyme)",
+                    "1 bay leaf",
+                    "Salt and pepper, to taste",
+                    "6 oz (170g) egg noodles (or any noodle you prefer)"
+                    ],
+                    "instructions": "Cook the chicken: In a large pot, heat 8 cups of chicken broth and bring it to a simmer. Add the chicken breasts or thighs, cover, and cook for about 15-20 minutes until fully cooked. Remove the chicken, shred it using two forks, and set aside. Sauté vegetables: In the same pot, heat 2 tbsp olive oil over medium heat. Add the diced onions, sliced carrots, and celery. Cook for about 5-7 minutes until the vegetables are softened. Stir in the minced garlic and cook for another minute. Add broth and seasoning: Pour the chicken broth back into the pot, add the thyme and bay leaf, and bring it to a simmer. Season with salt and pepper to taste. Cook the noodles: Add the egg noodles to the pot and cook according to the package instructions (usually about 6-8 minutes) until tender. Add the chicken: Stir in the shredded chicken and let everything heat through. Remove the bay leaf and adjust seasoning if necessary. Serve: Stir in fresh parsley and a squeeze of lemon juice for brightness, if desired. Ladle the soup into bowls and serve hot.",
+                    "category": "Soup",
+                    "image_url": "images/chicken-noodle-soup.jpg",
+                    "prep_time": "20 min",
+                    "cook_time": "35 min"
+
+            },
+            {
+                "id": 7,
+                "name": "Lasagna",
+                "ingredients": [
+                    "1 lb (450g) ground beef (or a mix of beef and Italian sausage)",
+                    "1 small onion, diced",
+                    "3 garlic cloves, minced",
+                    "1 can (28 oz/800g) crushed tomatoes",
+                    "2 tbsp tomato paste",
+                    "1 can (15 oz/425g) tomato sauce",
+                    "2 tsp dried basil",
+                    "1 tsp dried oregano",
+                    "Salt and pepper to taste",
+                    "15 oz (425g) ricotta cheese",
+                    "1 egg",
+                    "2 cups (200g) shredded mozzarella cheese, divided",
+                    "1/2 cup grated Parmesan cheese",
+                    "2 tbsp fresh parsley, chopped (or 1 tsp dried parsley)",
+                    "12 lasagna noodles",
+                    "2 cups (200g) shredded mozzarella cheese (in addition to the cheese mixture)",
+                    "Extra grated Parmesan for topping",
+                    ],
+                    "instructions": " Prepare the Meat Sauce: In a large skillet, heat a little oil over medium heat. Add the ground beef (and sausage, if using), onion, and garlic. Cook until the meat is browned and the onions are soft, about 5-7 minutes. Drain any excess fat. Stir in the crushed tomatoes, tomato paste, tomato sauce, basil, oregano, salt, and pepper. Bring the sauce to a simmer and let it cook for 15-20 minutes, stirring occasionally to let the flavors meld. Add fresh parsley if desired. 2. Prepare the Cheese Mixture: In a medium bowl, combine ricotta cheese, egg, 1 cup of shredded mozzarella, Parmesan, and parsley. Mix until smooth and set aside. 3. Cook the Lasagna Noodles: While the sauce simmers, cook the lasagna noodles in a large pot of salted boiling water according to the package instructions, typically 8-10 minutes. Drain the noodles and lay them flat on a baking sheet or clean towel to prevent sticking. 4. Assemble the Lasagna: Preheat your oven to 375°F (190°C). Spread a thin layer of meat sauce (about 1 cup) on the bottom of a 9x13-inch baking dish. Lay 3 cooked lasagna noodles on top of the sauce. Spread 1/3 of the ricotta cheese mixture over the noodles. Sprinkle 1/3 of the remaining shredded mozzarella on top. Add 1/3 of the meat sauce over the cheese. Repeat the layers two more times: noodles, ricotta mixture, mozzarella, and meat sauce. Finish with a final layer of noodles, a little meat sauce, and the remaining mozzarella and Parmesan cheese on top. 5. Bake: Cover the lasagna with aluminum foil (to prevent the cheese from burning) and bake in the preheated oven for 25 minutes. Remove the foil and bake for an additional 15-20 minutes, or until the cheese is bubbly and golden brown on top. Let the lasagna cool for about 10 minutes before slicing and serving.",
+                    "category": "Pasta",
+                    "image_url": "images/lasagna.jpg",
+                    "prep_time": "45 min",
+                    "cook_time": "50 min"
+
+                },
+                {
+                "id": 8,
+                "name": "Tiramisu",
+                "ingredients": [
+                    "6 large egg yolks",
+                    "3/4 cup (150g) granulated sugar",
+                    "2/3 cup (160ml) milk",
+                    "1 cup (240ml) heavy cream",
+                    "1 cup (240g) mascarpone cheese",
+                    "1 cup (240ml) brewed espresso or strong coffee, cooled",
+                    "2 tbsp coffee liqueur (optional)",
+                    "24-30 ladyfinger cookies (savoiardi)",
+                    "Unsweetened cocoa powder, for dusting",
+                    "Dark chocolate shavings (optional, for garnish)"
+                ],
+                "instructions": "1. Prepare the Custard: In a medium saucepan, whisk together the egg yolks and granulated sugar until well combined and slightly thickened. Add the milk and cook over medium heat, stirring constantly until the mixture thickens enough to coat the back of a spoon, about 5-7 minutes. Do not let it boil. Remove from heat and let it cool to room temperature. 2. Whip the Cream: In a large mixing bowl, whip the heavy cream until stiff peaks form. Gently fold in the mascarpone cheese until smooth. 3. Combine: Once the egg yolk mixture has cooled, gently fold it into the mascarpone and whipped cream mixture until fully combined. 4. Prepare the Coffee Mixture: In a shallow dish, combine the brewed espresso and coffee liqueur (if using). 5. Assemble the Tiramisu: Quickly dip each ladyfinger into the coffee mixture, making sure not to soak them—just a quick dip will do. Lay a layer of soaked ladyfingers in the bottom of an 8x8-inch (20x20 cm) dish. Spread half of the mascarpone mixture over the ladyfingers. Repeat with another layer of dipped ladyfingers and the remaining mascarpone mixture. Smooth the top with a spatula. 6. Chill: Cover the dish with plastic wrap and refrigerate for at least 4 hours, preferably overnight, to let the flavors meld and the dessert to set. 7. Serve: Before serving, dust the top generously with cocoa powder and garnish with dark chocolate shavings if desired. Slice and serve chilled.",
+                "category": "Dessert",
+                "image_url": "images/tiramisu.jpg",
+                "prep_time": "45 min",
+                "cook_time": "0 min"
+                }
+
+
+
+
+        ];
+
+        function displayRecipes(filteredRecipes) {
+            const recipeList = document.getElementById('recipe-list');
+            recipeList.innerHTML = '';  // Clear the current recipes
+
+            if (filteredRecipes.length === 0) {
+                recipeList.innerHTML = '<p class="no-recipe">No recipes found. Please try another search.</p>';
+                return;
+            }
+
+            filteredRecipes.forEach(recipe => {
+                let recipeDiv = document.createElement('div');  // Create a div for each recipe
+                recipeDiv.className = 'recipe';
+
+                // Create the content for each recipe using template literals
+                let recipeContent = `
+                    <h2>${recipe.name}</h2>
+                    <p><strong>Category:</strong> ${recipe.category}</p>
+                    <p><strong>Ingredients:</strong></p>
+                    <ul>
+                        ${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+                    </ul>
+                    <p><strong>Instructions:</strong> ${recipe.instructions}</p>
+                    <p><strong>Prep Time:</strong> ${recipe.prep_time}</p>
+                    <p><strong>Cook Time:</strong> ${recipe.cook_time}</p>
+                    <img src="${recipe.image_url}" alt="${recipe.name}">
+                `;
+
+                recipeDiv.innerHTML = recipeContent;  // Add the content to the div
+                recipeList.appendChild(recipeDiv);  // Append the div to the recipe list container
+            });
+        }
+
+        // Initial display of all recipes
+        displayRecipes(recipes);
+
+        // Search for recipes by name or ingredient
+        function searchRecipe() {
+            const searchInput = document.getElementById('search-input').value.toLowerCase();
+            const filteredRecipes = recipes.filter(recipe => {
+                return (
+                    recipe.name.toLowerCase().includes(searchInput) ||
+                    recipe.ingredients.some(ingredient => ingredient.toLowerCase().includes(searchInput))
+                );
+            });
+
+            displayRecipes(filteredRecipes);
+        }
+    </script>
+</body>
+</html>
